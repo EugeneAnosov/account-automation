@@ -4,18 +4,25 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class BasePage {
 
-    String BaseUrl = "https://freeze-account.sandbox.similarweb.com/";
+    String baseUrl = "https://moster-account.sandbox.similarweb.com/";
 
     String loginPage = "login";
     String forgotPasswordPage = "forgotpassword";
+    String registrationPage = "registration";
+    String legalPage = "corp/legal/terms";
 
     public void openLoginPage() {
-        open(BaseUrl + loginPage);
+        open(baseUrl + loginPage);
         $(".outer-step__title").shouldHave(text("Welcome Back!"));
     }
 
     public void openForgotPasswordPage() {
-        open(BaseUrl + forgotPasswordPage);
+        open(baseUrl + forgotPasswordPage);
         $(".outer-step__group--header").shouldHave(text("Password Reset"));
+    }
+
+    public void openRegistrationPage() {
+        open(baseUrl + registrationPage);
+        $(".outer-step__title").shouldHave(text("Create your account"));
     }
 }

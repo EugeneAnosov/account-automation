@@ -13,7 +13,7 @@ public class LoginPage extends BasePage {
     String invalidPassword = "Qwerty11";
 
     @Test
-    public void loginUser() {
+    public void successfulLoginTest() {
         openLoginPage();
 
         $(byName("username")).setValue(validEmail);
@@ -25,7 +25,7 @@ public class LoginPage extends BasePage {
     }
 
     @Test
-    public void loginPageValidation() {
+    public void loginPageValidationTest() {
         openLoginPage();
 
         $(byText("log in")).click();
@@ -33,7 +33,7 @@ public class LoginPage extends BasePage {
         $(".outer-step__form-line:nth-child(2)").shouldHave(text("Please enter Password"));
 
         $(byName("username")).setValue(invalidEmail);
-        $(byName("password")).setValue("Qwerty1").pressEnter();
+        $(byName("password")).setValue(validPassword).pressEnter();
         $(".outer-step__group--error").shouldHave(text("Username or password is incorrect"));
 
         $(byName("username")).setValue(invalidEmail);
@@ -42,7 +42,7 @@ public class LoginPage extends BasePage {
     }
 
     @Test
-    public void loginSocialNetwork() {
+    public void successfulGoSocialNetworkTest() {
         openLoginPage();
 
         $(".social-auth__button--google").click();
@@ -55,7 +55,7 @@ public class LoginPage extends BasePage {
     }
 
     @Test
-    public void assertLinks() {
+    public void assertLinksTest() {
         openLoginPage();
 
         $(".outer-step__link-blue").shouldHave(href("/forgotpassword"));
