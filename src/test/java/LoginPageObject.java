@@ -4,7 +4,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class LoginPage extends BasePage {
+public class LoginPageObject extends BasePageObject {
 
     String validEmail = "yevhen.anosov+automation@similarweb.com";
     String invalidEmail = "yevhen.anosov+automation1@similarweb.com";

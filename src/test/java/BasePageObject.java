@@ -2,7 +2,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class BasePage {
+public class BasePageObject {
 
     String baseUrl = "https://moster-account.sandbox.similarweb.com/";
 
