@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class ForgotPasswordPageObject extends BasePageObject {
+public class ForgotPasswordTester extends BaseTester {
 
     @Test
     public void checkForgotPasswordTest() {

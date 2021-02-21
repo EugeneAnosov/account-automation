@@ -2,7 +2,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class BasePageObject {
+public class BaseTester {
 
     String baseUrl = "https://moster-account.sandbox.similarweb.com/";
 
@@ -10,6 +10,7 @@ public class BasePageObject {
     String forgotPasswordPage = "forgotpassword";
     String registrationPage = "registration";
     String legalPage = "corp/legal/terms";
+    String privacyPolicy = "corp/legal/privacy-policy/";
 
     public void openLoginPage() {
         open(baseUrl + loginPage);

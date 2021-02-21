@@ -1,10 +1,11 @@
+
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class LoginPageObject extends BasePageObject {
+public class LoginTester extends BaseTester {
 
     String validEmail = "yevhen.anosov+automation@similarweb.com";
     String invalidEmail = "yevhen.anosov+automation1@similarweb.com";
@@ -15,7 +16,6 @@ public class LoginPageObject extends BasePageObject {
     @Test
     public void successfulLoginTest() {
         openLoginPage();
-
         $(byName("username")).setValue(validEmail);
         $(byName("password")).setValue(validPassword).pressEnter();
 
@@ -58,7 +58,7 @@ public class LoginPageObject extends BasePageObject {
     public void assertLinksTest() {
         openLoginPage();
 
-        $(".outer-step__link-blue").shouldHave(href("/forgotpassword"));
-        $(".outer-step__group:nth-child(6) > p > a").shouldHave(href("/registration"));
+        $(".outer-step__link-blue").shouldHave(href("/" + forgotPasswordPage));
+        $(".outer-step__group:nth-child(6) > p > a").shouldHave(href("/" + registrationPage));
     }
 }
