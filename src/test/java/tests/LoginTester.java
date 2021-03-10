@@ -1,3 +1,5 @@
+package tests;
+
 import manager.UrlManager;
 import manager.UserManager;
 import org.junit.jupiter.api.Test;

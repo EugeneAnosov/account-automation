@@ -1,3 +1,5 @@
+package tests;
+
 import manager.UrlManager;
 
 import static com.codeborne.selenide.Condition.text;

@@ -1,3 +1,5 @@
+package tests;
+
 import manager.UrlManager;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
