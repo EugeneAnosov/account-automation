@@ -1,24 +1,24 @@
+import manager.UrlManager;
+import manager.UserManager;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class LoginTester {
+public class LoginTester extends BaseTester{
 
     @Test
     public void successfulLoginTest() {
 
         String marketResearch = "Market Research";
 
-        UrlManager loginPage = new UrlManager();
-        loginPage.openLoginPage();
+        openLoginPage();
 
-        UserManager user = new UserManager();
+        $(byName("username")).setValue(UserManager.User.BUSINESSEMAIL.getUser());
+        $(byName("password")).setValue(UserManager.User.PASSWORD.getUser()).pressEnter();
 
-        $(byName("username")).setValue(user.businessEmail);
-        $(byName("password")).setValue(user.password).pressEnter();
-        sleep(10000);
+        sleep(10000); // Replace to wait.until()
 
         $(byAttribute("data-automation", "Title")).shouldHave(text(marketResearch));
     }
@@ -30,18 +30,20 @@ public class LoginTester {
         String invalidEmailValidationMessage = "Please enter valid Email";
         String emptyPasswordValidationMessage = "Please enter Password";
 
-        UrlManager loginPage = new UrlManager();
-        loginPage.openLoginPage();
+        openLoginPage();
 
-        $(".outer-step__button-primary").click();
-        $(".outer-step__form-line").shouldHave(text(invalidEmailValidationMessage));
-        $(".outer-step__form-line:nth-child(2)").shouldHave(text(emptyPasswordValidationMessage));
+        $(byAttribute("data-test", "submit-login")).click();
+        $(byAttribute("data-test", "email"))
+                .shouldHave(text(invalidEmailValidationMessage));
+        $(byAttribute("data-test", "password"))
+                .shouldHave(text(emptyPasswordValidationMessage));
 
-        UserManager user = new UserManager();
-
-        checkValidationInputField(user.businessEmail, user.invalidPassword, incorrectEmailPassValidationMessage);
-        checkValidationInputField(user.invalidBusinessEmail, user.password, incorrectEmailPassValidationMessage);
-        checkValidationInputField(user.invalidBusinessEmail, user.invalidPassword, incorrectEmailPassValidationMessage);
+        checkValidationInputField(UserManager.User.BUSINESSEMAIL.getUser(),
+                UserManager.User.INVALIDPASSWORD.getUser(), incorrectEmailPassValidationMessage);
+        checkValidationInputField(UserManager.User.INVALIDBUSINESSEMAIL.getUser(),
+                UserManager.User.PASSWORD.getUser(), incorrectEmailPassValidationMessage);
+        checkValidationInputField(UserManager.User.INVALIDBUSINESSEMAIL.getUser(),
+                UserManager.User.INVALIDPASSWORD.getUser(), incorrectEmailPassValidationMessage);
     }
 
     private void checkValidationInputField(String businessEmail, String password, String validationMessage) {
@@ -57,24 +59,23 @@ public class LoginTester {
         String google = "Google";
         String linkedin = "New to LinkedIn?";
 
-        UrlManager loginPage = new UrlManager();
-        loginPage.openLoginPage();
+        openLoginPage();
 
-        $(".social-auth__button--google").click();
-        $("#yDmH0d").shouldHave(text(google));
+        $(byAttribute("data-test", "google")).click();
+        $(".kHn9Lb").shouldHave(text(google));
 
-        loginPage.openLoginPage();
+        openLoginPage();
 
-        $(".social-auth__button--linkedin").click();
+        $(byAttribute("data-test", "linkedin")).click();
         $(".footer-app-content-actions").shouldHave(text(linkedin));
     }
 
     @Test
     public void assertLinksTest() {
-        UrlManager loginPage = new UrlManager();
-        loginPage.openLoginPage();
 
-        $(".outer-step__link-blue").shouldHave(href("/" + UrlManager.Url.FORGOTPASSWORD.getUrl()));
-        $(".outer-step__group:nth-child(6) > p > a").shouldHave(href("/" + UrlManager.Url.REGISTRATIONPAGE.getUrl()));
+        openLoginPage();
+
+        $(byAttribute("data-test", "forgot-password")).shouldHave(href("/" + UrlManager.Url.FORGOTPASSWORD.getUrl()));
+        $(byAttribute("data-test", "sign-up")).shouldHave(href("/" + UrlManager.Url.REGISTRATIONPAGE.getUrl()));
     }
 }

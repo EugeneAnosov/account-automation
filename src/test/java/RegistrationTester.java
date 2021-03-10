@@ -1,3 +1,4 @@
+import manager.UrlManager;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
@@ -16,8 +17,7 @@ public class RegistrationTester extends BaseTester {
         String validEmail = "yevhen.anosov+automation" + timeStamp + "@similarweb.com";
         String validPassword = "Qwerty1";
 
-        UrlManager registrationPage = new UrlManager();
-        registrationPage.openRegistrationPage();
+        openRegistrationPage();
 
         $(By.name("firstName")).setValue("test");
         $(By.name("lastName")).setValue("automationSignUp");
@@ -35,8 +35,7 @@ public class RegistrationTester extends BaseTester {
         String gmailEmail = "eugene.anosov+automation@gmail.com";
         String invalidPassword = "1";
 
-        UrlManager registrationPage = new UrlManager();
-        registrationPage.openRegistrationPage();
+        openRegistrationPage();
 
         $(".outer-step__button-primary").pressEnter();
 
@@ -67,8 +66,8 @@ public class RegistrationTester extends BaseTester {
 
     @Test
     public void checkLanguageChooser() {
-        UrlManager registrationPage = new UrlManager();
-        registrationPage.openRegistrationPage();
+
+        openRegistrationPage();
 
         $(".us").click();
         $(".jp").click();
@@ -89,8 +88,7 @@ public class RegistrationTester extends BaseTester {
         String loginAssertlink = "/login?returnUrl=https://moster-pro.sandbox.similarweb.com";
         String ninjaSandbox = "https://www.similarweb.ninja//";
 
-        UrlManager registrationPage = new UrlManager();
-        registrationPage.openRegistrationPage();
+        openRegistrationPage();
 
         $(".outer-step__link-blue").shouldHave(href(loginAssertlink));
         $(".legal__link").shouldHave(href(ninjaSandbox + UrlManager.Url.LEGALPAGE.getUrl()));

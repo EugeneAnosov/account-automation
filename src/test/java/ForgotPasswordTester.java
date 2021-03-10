@@ -6,8 +6,8 @@ public class ForgotPasswordTester extends BaseTester {
 
     @Test
     public void checkForgotPasswordTest() {
-        UrlManager forgotPassword = new UrlManager();
-        forgotPassword.openForgotPasswordPage();
+
+        openForgotPasswordPage();
 
         switchTo().frame($x("//iframe[starts-with(@name, 'a-') and starts-with(@src, 'https://www.google.com/recaptcha')]"));
         $("div.rc-anchor-content").click();
