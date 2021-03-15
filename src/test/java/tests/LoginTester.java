@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class LoginTester extends BaseTester{
+public class LoginTester extends BaseTester {
 
     @Test
     public void successfulLoginTest() {

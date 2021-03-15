@@ -2,7 +2,7 @@ package manager;
 
 public class UrlManager {
 
-    public enum Url{
+    public enum Url {
         BASEURL("https://services601-account.sandbox.similarweb.com/"),
         LOGINPAGE("login"),
         FORGOTPASSWORD("forgotpassword"),
@@ -12,11 +12,12 @@ public class UrlManager {
 
         private String url;
 
-        Url(String url){
+        Url(String url) {
             this.url = url;
         }
 
         public String getUrl() {
-            return url;}
+            return url;
         }
+    }
 }
