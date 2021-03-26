@@ -1,10 +1,11 @@
-package manager;
+package managers;
 
 public class UserManager {
 
     public enum User {
         BUSINESSEMAIL("yevhen.anosov+automation@similarweb.com"),
         PASSWORD("Qwerty1"),
+
         INVALIDBUSINESSEMAIL("yevhen.anosov+automation1@similarweb.com"),
         INVALIDPASSWORD("Test1234");
 
