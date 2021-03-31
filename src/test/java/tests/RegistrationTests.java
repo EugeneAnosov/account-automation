@@ -1,29 +1,31 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.BeforeEach;
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pageobjects.RegistrationPage;
+import pages.RegistrationPage;
 
+@DisplayName("Registration Page")
 public class RegistrationTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
-    @BeforeEach
-
 
     @Test
+    @DisplayName("User Registration Test")
+    @Story("User registered successfully")
     public void userRegistrationTest() {
-
-        registrationPage.openLoginPage();
+        registrationPage.openRegistrationPage();
         registrationPage.fillForm();
+        registrationPage.submit();
+        registrationPage.checkConfirmationPageOpened();
     }
 
     @Test
+    @DisplayName("Fields Validation Test")
+    @Story("Validation fields on the Registration page")
     public void registrationPageValidationTest() {
-
-        registrationPage.openLoginPage();
+        registrationPage.openRegistrationPage();
         registrationPage.submit();
         registrationPage.checkEmptyFieldValidation();
         registrationPage.checkFirstNameValidation();
@@ -34,18 +36,20 @@ public class RegistrationTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Language Chooser Test")
+    @Story("Check languages in the dropdown")
     public void checkLanguageChooser() {
-
-        registrationPage.openLoginPage();
+        registrationPage.openRegistrationPage();
         registrationPage.chooseJapanLanguage();
         registrationPage.chooseFranceLanguage();
         registrationPage.choosePortugalLanguage();
     }
 
     @Test
+    @DisplayName("Registration Page Links Test")
+    @Story("Check links on the page")
     public void assertLinks() {
-
-        registrationPage.openLoginPage();
+        registrationPage.openRegistrationPage();
         registrationPage.assertRegistrationPageLink();
     }
 }

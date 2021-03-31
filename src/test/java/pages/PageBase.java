@@ -1,4 +1,4 @@
-package pageobjects;
+package pages;
 
 import managers.UrlManager;
 
