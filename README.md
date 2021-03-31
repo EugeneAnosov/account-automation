@@ -1,2 +1,4 @@
-# narwhals-account-automation
+# Welcome to Account automation project
+
+Ask Eugene Anosov about all issues or improvements
 
