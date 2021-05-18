@@ -15,7 +15,9 @@ public class LoginTests extends TestBase {
     @Story("User logged to SimilarWeb successfully")
     void successfulLoginTest() {
         loginPage.openLoginPage();
-        loginPage.fillForm();
+        loginPage.fillBusinessEmailField();
+        loginPage.fillPasswordField();
+        loginPage.submit();
         loginPage.checkSuccessfullLogin();
     }
 

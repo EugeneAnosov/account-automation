@@ -1,4 +1,4 @@
-package managers;
+package helpers;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;

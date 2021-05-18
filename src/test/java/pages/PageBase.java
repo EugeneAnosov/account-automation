@@ -1,6 +1,6 @@
 package pages;
 
-import managers.UrlManager;
+import helpers.UrlManager;
 
 public class PageBase {
 

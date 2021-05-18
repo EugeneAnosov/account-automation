@@ -1,8 +1,8 @@
 package pages;
 
 import io.qameta.allure.Step;
-import managers.UrlManager;
-import managers.UserManager;
+import helpers.UrlManager;
+import helpers.UserManager;
 
 import java.time.Duration;
 
@@ -16,16 +16,20 @@ public class LoginPage extends PageBase {
         urlManager.openLoginPage();
     }
 
-    @Step("Fill 'Business Email' and 'Password'")
-    public void fillForm() {
+    @Step("Fill 'Business Email' field")
+    public void fillBusinessEmailField() {
         $("[data-test=email] [data-test=input]").setValue(UserManager.User.BUSINESSEMAIL.getUser());
-        $("[data-test=password] [data-test=input]").setValue(UserManager.User.PASSWORD.getUser()).pressEnter();
+    }
+
+    @Step("Fill 'Password' field")
+    public void fillPasswordField() {
+        $("[data-test=password] [data-test=input]").setValue(UserManager.User.PASSWORD.getUser());
     }
 
     @Step("User logged to SimilarWeb successfully")
     public void checkSuccessfullLogin() {
-        //TODO: Move variable to another file
-        String marketResearch = "Market Research";
+        //TODO: Move variables to another file
+        String marketResearch = "Digital Research Intelligence";
 
         $(".app-loader").shouldBe(visible);
         $(".app-loader").should(disappear, Duration.ofSeconds(30));
@@ -51,7 +55,7 @@ public class LoginPage extends PageBase {
 
     @Step("Validate incorrect credentials for email/password fields")
     public void checkIncorrectCredentialValidation() {
-        //TODO: Move variable to another file
+        //TODO: Move variables to another file
         String incorrectEmailPassValidationMessage = "Username or password is incorrect";
 
         checkValidationInputField(

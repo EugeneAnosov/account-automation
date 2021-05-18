@@ -1,7 +1,8 @@
 package pages;
 
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
-import managers.UrlManager;
+import helpers.UrlManager;
 
 
 import java.text.SimpleDateFormat;
@@ -74,7 +75,7 @@ public class RegistrationPage extends PageBase {
 
     @Step("Password 'must be at least 6 characters' validation")
     public void checkInvalidPasswordValidation() {
-        //TODO: Move variable to another file
+        //TODO: Move variables to another file
         String invalidPassword = "1";
 
         $("[data-test=password] [data-test=input]").setValue(invalidPassword).pressTab();
@@ -83,10 +84,11 @@ public class RegistrationPage extends PageBase {
 
     @Step("Gmail user cannot sign up validation")
     public void checkGmailEmailValidation() {
-        //TODO: Move variable to another file
+        //TODO: Move variables to another file
         String gmailEmail = "test@gmail.com";
 
         // TODO: FIX. Cannot navigate to input focus
+        Selenide.refresh();
         $("[data-test=email] [data-test=input]").setValue(gmailEmail).pressTab();
         $("[data-test=email] [data-test=error]").shouldHave(text("If you want to sign up with Gmail please use the Google Button"));
     }
@@ -115,7 +117,7 @@ public class RegistrationPage extends PageBase {
     @Step("Check links on the page")
     public void assertRegistrationPageLink() {
 
-        //TODO: Move variable to another file
+        //TODO: Move variables to another file
         String loginLink = "/login?returnUrl=https://moster-pro.sandbox.similarweb.com";
         String stagingLiteSandbox = "https://staging-lite.sandbox.similarweb.com/";
 

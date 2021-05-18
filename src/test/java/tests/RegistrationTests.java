@@ -31,7 +31,7 @@ public class RegistrationTests extends TestBase {
         registrationPage.checkFirstNameValidation();
         registrationPage.checkLastNameValidation();
         registrationPage.checkExistingEmailValidation();
-        //registrationPage.checkGmailEmailValidation();
+        registrationPage.checkGmailEmailValidation();
         registrationPage.checkInvalidPasswordValidation();
     }
 
