@@ -1,22 +1,15 @@
 package helpers;
 
+import config.DriverConfig;
+import org.aeonbits.owner.ConfigFactory;
+
 public class UserManager {
 
-    public enum User {
-        BUSINESSEMAIL("yevhen.anosov+automation@similarweb.com"),
-        PASSWORD("Qwerty1"),
+    static DriverConfig driverConfig = ConfigFactory.create(DriverConfig.class);
 
-        INVALIDBUSINESSEMAIL("yevhen.anosov+automation1@similarweb.com"),
-        INVALIDPASSWORD("Test1234");
+    public static final String BUSINESSEMAIL = driverConfig.getBusinessEmail();
+    public static final String PASSWORD = driverConfig.getPassword();
 
-        private String user;
-
-        User(String user) {
-            this.user = user;
-        }
-
-        public String getUser() {
-            return user;
-        }
-    }
+    public static final String INVALIDBUSINESSEMAIL = driverConfig.getInvalidBusinessEmail();
+    public static final String INVALIDPASSWORD = driverConfig.getInvalidBusinessPassword();
 }

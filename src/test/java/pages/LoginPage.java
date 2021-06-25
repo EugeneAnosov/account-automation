@@ -18,12 +18,12 @@ public class LoginPage extends PageBase {
 
     @Step("Fill 'Business Email' field")
     public void fillBusinessEmailField() {
-        $("[data-test=email] [data-test=input]").setValue(UserManager.User.BUSINESSEMAIL.getUser());
+        $("[data-test=email] [data-test=input]").setValue(UserManager.BUSINESSEMAIL);
     }
 
     @Step("Fill 'Password' field")
     public void fillPasswordField() {
-        $("[data-test=password] [data-test=input]").setValue(UserManager.User.PASSWORD.getUser());
+        $("[data-test=password] [data-test=input]").setValue(UserManager.PASSWORD);
     }
 
     @Step("User logged to SimilarWeb successfully")
@@ -59,18 +59,18 @@ public class LoginPage extends PageBase {
         String incorrectEmailPassValidationMessage = "Username or password is incorrect";
 
         checkValidationInputField(
-                UserManager.User.BUSINESSEMAIL.getUser(),
-                UserManager.User.INVALIDPASSWORD.getUser(),
+                UserManager.BUSINESSEMAIL,
+                UserManager.INVALIDPASSWORD,
                 incorrectEmailPassValidationMessage);
 
         checkValidationInputField(
-                UserManager.User.INVALIDBUSINESSEMAIL.getUser(),
-                UserManager.User.PASSWORD.getUser(),
+                UserManager.INVALIDBUSINESSEMAIL,
+                UserManager.INVALIDPASSWORD,
                 incorrectEmailPassValidationMessage);
 
         checkValidationInputField(
-                UserManager.User.INVALIDBUSINESSEMAIL.getUser(),
-                UserManager.User.INVALIDPASSWORD.getUser(),
+                UserManager.INVALIDBUSINESSEMAIL,
+                UserManager.INVALIDPASSWORD,
                 incorrectEmailPassValidationMessage);
     }
 

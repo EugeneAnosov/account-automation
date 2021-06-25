@@ -23,7 +23,8 @@ def selenideVersion = "5.19.0",
     javaFakerVersion = "1.0.2",
     assertJVersion = "3.11.1",
     aspectJWeavwerVersion = "1.9.6",
-    allureSelenideVersion = "2.13.9"
+    allureSelenideVersion = "2.13.9",
+    ownerVersion = "1.0.12"
 
 dependencies {
     testImplementation (
@@ -32,7 +33,8 @@ dependencies {
             "com.github.javafaker:javafaker:$javaFakerVersion",
             "org.assertj:assertj-core:$assertJVersion",
             "org.aspectj:aspectjweaver:$aspectJWeavwerVersion",
-            "io.qameta.allure:allure-selenide:$allureSelenideVersion")
+            "io.qameta.allure:allure-selenide:$allureSelenideVersion",
+            "org.aeonbits.owner:owner:$ownerVersion")
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
 }
 
