@@ -11,12 +11,14 @@ import java.util.Calendar;
 import static com.codeborne.selenide.Condition.href;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage extends PageBase {
 
     @Step("Open Registration page")
     public void openRegistrationPage() {
-        urlManager.openRegistrationPage();
+        open(UrlManager.BASEURL + UrlManager.REGISTRATIONPAGE);
+        $(".outer-step__title").shouldHave(text("Create your account"));
     }
 
     @Step("User fills form")
@@ -122,7 +124,7 @@ public class RegistrationPage extends PageBase {
         String stagingLiteSandbox = "https://staging-lite.sandbox.similarweb.com/";
 
         $("[data-test=loginLink]").shouldHave(href(loginLink));
-        $("[data-test=termsLink]").shouldHave(href(stagingLiteSandbox + UrlManager.Url.LEGALPAGE.getUrl()));
-        $("[data-test=privacyLink]").shouldHave(href(stagingLiteSandbox + UrlManager.Url.PRIVACYPOLICY.getUrl()));
+        $("[data-test=termsLink]").shouldHave(href(stagingLiteSandbox + UrlManager.LEGALPAGE));
+        $("[data-test=privacyLink]").shouldHave(href(stagingLiteSandbox + UrlManager.PRIVACYPOLICY));
     }
 }

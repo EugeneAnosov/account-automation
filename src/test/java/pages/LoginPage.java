@@ -8,12 +8,14 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class LoginPage extends PageBase {
 
     @Step("Open Login page")
     public void openLoginPage() {
-        urlManager.openLoginPage();
+        open(UrlManager.BASEURL + UrlManager.LOGINPAGE);
+        $(".outer-step").shouldHave(text("Welcome Back!"));
     }
 
     @Step("Fill 'Business Email' field")
@@ -97,7 +99,7 @@ public class LoginPage extends PageBase {
 
     @Step("Check that links are not empty")
     public void assertLoginPageLink() {
-        $("[data-test=forgotPasswordLink]").shouldHave(href("/" + UrlManager.Url.FORGOTPASSWORD.getUrl()));
-        $("[data-test=signUpLink]").shouldHave(href("/" + UrlManager.Url.REGISTRATIONPAGE.getUrl()));
+        $("[data-test=forgotPasswordLink]").shouldHave(href("/" + UrlManager.FORGOTPASSWORD));
+        $("[data-test=signUpLink]").shouldHave(href("/" + UrlManager.REGISTRATIONPAGE));
     }
 }
