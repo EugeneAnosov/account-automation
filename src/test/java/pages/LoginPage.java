@@ -2,8 +2,6 @@ package pages;
 
 import helpers.ValidationMessageManager;
 import io.qameta.allure.Step;
-import helpers.UrlManager;
-import helpers.UserManager;
 
 import java.time.Duration;
 

@@ -15,4 +15,7 @@ public interface DriverConfig extends Config {
 
     @Key("get.invalidpassword")
     String getInvalidBusinessPassword();
+
+    @Key("get.baseurl")
+    String getBaseUrl();
 }

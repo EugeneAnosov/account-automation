@@ -1,8 +1,10 @@
 package helpers;
 
+import static helpers.UserManager.driverConfig;
+
 public class UrlManager {
 
-    public static final String BASEURL = "https://moster-account.sandbox.similarweb.com/";
+    public static final String BASEURL = driverConfig.getBaseUrl();;
     public static final String LOGINPAGE = "login";
     public static final String FORGOTPASSWORD = "forgotpassword";
     public static final String REGISTRATIONPAGE = "registration";
