@@ -1,5 +1,6 @@
 package pages;
 
+import helpers.ValidationMessageManager;
 import io.qameta.allure.Step;
 import helpers.UrlManager;
 import helpers.UserManager;
@@ -9,23 +10,25 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static helpers.UrlManager.*;
+import static helpers.UserManager.*;
 
 public class LoginPage extends PageBase {
 
     @Step("Open Login page")
     public void openLoginPage() {
-        open(UrlManager.BASEURL + UrlManager.LOGINPAGE);
+        open(BASEURL + LOGINPAGE);
         $(".outer-step").shouldHave(text("Welcome Back!"));
     }
 
     @Step("Fill 'Business Email' field")
     public void fillBusinessEmailField() {
-        $("[data-test=email] [data-test=input]").setValue(UserManager.BUSINESSEMAIL);
+        $("[data-test=email] [data-test=input]").setValue(BUSINESSEMAIL);
     }
 
     @Step("Fill 'Password' field")
     public void fillPasswordField() {
-        $("[data-test=password] [data-test=input]").setValue(UserManager.PASSWORD);
+        $("[data-test=password] [data-test=input]").setValue(PASSWORD);
     }
 
     @Step("User logged to SimilarWeb successfully")
@@ -45,14 +48,10 @@ public class LoginPage extends PageBase {
 
     @Step("Check that empty field validation is correct")
     public void checkEmptyFieldValidation() {
-        //TODO: Move variables to another file
-        String invalidEmailValidationMessage = "Please enter valid Email";
-        String emptyPasswordValidationMessage = "Please enter Password";
-
         $("[data-test=email]")
-                .shouldHave(text(invalidEmailValidationMessage));
+                .shouldHave(text(ValidationMessageManager.INVALIDEMAIL));
         $("[data-test=password]")
-                .shouldHave(text(emptyPasswordValidationMessage));
+                .shouldHave(text(ValidationMessageManager.EMPTYPASSWORD));
     }
 
     @Step("Validate incorrect credentials for email/password fields")
@@ -61,19 +60,19 @@ public class LoginPage extends PageBase {
         String incorrectEmailPassValidationMessage = "Username or password is incorrect";
 
         checkValidationInputField(
-                UserManager.BUSINESSEMAIL,
-                UserManager.INVALIDPASSWORD,
-                incorrectEmailPassValidationMessage);
+                BUSINESSEMAIL,
+                INVALIDPASSWORD,
+                ValidationMessageManager.INCORRECTEMAILPASSWORD);
 
         checkValidationInputField(
-                UserManager.INVALIDBUSINESSEMAIL,
-                UserManager.INVALIDPASSWORD,
-                incorrectEmailPassValidationMessage);
+                INVALIDBUSINESSEMAIL,
+                INVALIDPASSWORD,
+                ValidationMessageManager.INCORRECTEMAILPASSWORD);
 
         checkValidationInputField(
-                UserManager.INVALIDBUSINESSEMAIL,
-                UserManager.INVALIDPASSWORD,
-                incorrectEmailPassValidationMessage);
+                INVALIDBUSINESSEMAIL,
+                INVALIDPASSWORD,
+                ValidationMessageManager.INCORRECTEMAILPASSWORD);
     }
 
     private void checkValidationInputField(String businessEmail, String password, String validationMessage) {
@@ -86,6 +85,7 @@ public class LoginPage extends PageBase {
     @Step("Open Google authorization page")
     public void openGoogleAuthorizationPage() {
         String google = "Google";
+
         $("[data-test=googleButton]").click();
         $("#initialView").shouldHave(text(google));
     }
@@ -93,13 +93,14 @@ public class LoginPage extends PageBase {
     @Step("Open Linkedin authorization page")
     public void openLinkedinAuthorizationPage() {
         String linkedin = "New to LinkedIn?";
+
         $("[data-test=linkedinButton]").click();
         $("#app__container").shouldHave(text(linkedin));
     }
 
     @Step("Check that links are not empty")
     public void assertLoginPageLink() {
-        $("[data-test=forgotPasswordLink]").shouldHave(href("/" + UrlManager.FORGOTPASSWORD));
-        $("[data-test=signUpLink]").shouldHave(href("/" + UrlManager.REGISTRATIONPAGE));
+        $("[data-test=forgotPasswordLink]").shouldHave(href("/" + FORGOTPASSWORD));
+        $("[data-test=signUpLink]").shouldHave(href("/" + REGISTRATIONPAGE));
     }
 }
