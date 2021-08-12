@@ -18,8 +18,8 @@ allure {
     }
 }
 
-def selenideVersion = "5.19.0",
-    junitVersion = "5.7.1",
+def selenideVersion = "5.23.1",
+    junitVersion = "5.7.2",
     javaFakerVersion = "1.0.2",
     assertJVersion = "3.11.1",
     aspectJWeavwerVersion = "1.9.6",
